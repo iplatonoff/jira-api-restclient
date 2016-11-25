@@ -66,7 +66,8 @@ class CurlClient implements ClientInterface
 		$endpoint,
 		AuthenticationInterface $credential,
 		$is_file = false,
-		$debug = false
+		$debug = false,
+		$custom_headers = array()
 	) {
 		if ( !($credential instanceof Basic) && !($credential instanceof Anonymous) ) {
 			throw new \InvalidArgumentException(sprintf(
@@ -105,6 +106,9 @@ class CurlClient implements ClientInterface
 			curl_setopt($curl, CURLOPT_HTTPHEADER, array('X-Atlassian-Token: nocheck'));
 		}
 		else {
+			foreach($custom_headers as $header){
+				curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+			}
 			curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json;charset=UTF-8'));
 		}
 
