@@ -731,7 +731,7 @@ class Api
 			$this->custom_headers
 		);
 
-		if ( strlen($result) ) {
+		if ( $result ) {
 			$json = json_decode($result, true);
 
 			if ( $this->options & self::AUTOMAP_FIELDS ) {
