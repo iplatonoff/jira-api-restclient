@@ -1,7 +1,7 @@
 {
     "name": "iplatonoff/jira-api-restclient",
     "description": "JIRA REST API Client",
-    "keywords": ["jira","rest","api"],
+    "keywords": ["jira","rest","api", "client"],
     "type": "library",
     "license": "MIT",
     "authors": [
