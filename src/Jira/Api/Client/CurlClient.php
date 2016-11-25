@@ -106,10 +106,7 @@ class CurlClient implements ClientInterface
 			curl_setopt($curl, CURLOPT_HTTPHEADER, array('X-Atlassian-Token: nocheck'));
 		}
 		else {
-			foreach($custom_headers as $header){
-				curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
-			}
-			curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json;charset=UTF-8'));
+			curl_setopt($curl, CURLOPT_HTTPHEADER, array_merge($custom_headers,array('Content-Type: application/json;charset=UTF-8')));
 		}
 
 		if ( $method == 'POST' ) {
