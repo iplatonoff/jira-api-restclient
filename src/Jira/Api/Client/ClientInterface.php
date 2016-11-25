@@ -57,7 +57,8 @@ interface ClientInterface
 		$endpoint,
 		AuthenticationInterface $credential,
 		$is_file = false,
-		$debug = false
+		$debug = false,
+		$custom_headers = array()
 	);
 
 }
