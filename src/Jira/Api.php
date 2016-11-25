@@ -94,6 +94,8 @@ class Api
 	 * @var array|null
 	 */
 	protected $resolutions;
+	
+	protected $custom_headers;
 
 	/**
 	 * Create a JIRA API client.
@@ -105,7 +107,8 @@ class Api
 	public function __construct(
 		$endpoint,
 		AuthenticationInterface $authentication,
-		ClientInterface $client = null
+		ClientInterface $client = null,
+		$custom_headers = array()
 	) {
 		$this->setEndPoint($endpoint);
 		$this->authentication = $authentication;
@@ -113,6 +116,7 @@ class Api
 		if ( is_null($client) ) {
 			$client = new CurlClient();
 		}
+		$this->custom_headers = $custom_headers;
 
 		$this->client = $client;
 	}
@@ -723,7 +727,8 @@ class Api
 			$this->getEndpoint(),
 			$this->authentication,
 			$is_file,
-			$debug
+			$debug,
+			$this->custom_headers
 		);
 
 		if ( strlen($result) ) {
