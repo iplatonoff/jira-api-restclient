@@ -736,7 +736,7 @@ class Api
 
 			if ( $this->options & self::AUTOMAP_FIELDS ) {
 				if ( isset($json['issues']) ) {
-					if ( !count($this->fields) ) {
+					if ( $this->fields&&!count($this->fields) ) {
 						$this->getFields();
 					}
 
